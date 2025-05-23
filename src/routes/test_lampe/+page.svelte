@@ -1,4 +1,5 @@
 <script>
+    import FirefliesGroup from "../../components/FirefliesGroup.svelte";
     import LampeTorche from "../../components/LampeTorche.svelte";
 </script>
 
@@ -14,6 +15,6 @@
         z-index: 0;
     }
 </style>
-
-<div class="bg-test"></div>
 <LampeTorche />
+<FirefliesGroup count={30} minSize={2} maxSize={7} minSpeed={10} maxSpeed={100} />
+<div class="bg-test"></div>
