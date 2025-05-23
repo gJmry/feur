@@ -1,1 +1,4 @@
-<h1> LA GRAND MERE DE EMILIEN JE LA BOURLINGUE ON CD </h1>
+<div class="flex flex-col min-h-screen justify-center items-center">
+    <h1>LA GRAND MÈRE DE EMILIEN JE LA BOURLINGUE ON CD</h1>
+    <img src="emilien.webp" alt="Emilien" />
+</div>
