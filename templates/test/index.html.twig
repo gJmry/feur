@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block title %}Hello TestController!{% endblock %}
+
+{% block body %}
+    <div class="col-xl-11 col-md-12 mx-auto">
+        <h1>Hello MON ENORME PAF! ✅</h1>
+
+        This friendly message is coming from:
+        <ul>
+            <li>Your controller at <code><a
+                            href="{{ 'C:/wamp64/www/feur/src/Controller/TestController.php'|file_link(0) }}">src/Controller/TestController.php</a></code>
+            </li>
+            <li>Your template at <code><a href="{{ 'C:/wamp64/www/feur/templates/test/index.html.twig'|file_link(0) }}">templates/test/index.html.twig</a></code>
+            </li>
+        </ul>
+
+        <button type="button" class="btn btn-primary">Test Bootstrap Button</button>
+
+        <div class="alert alert-success mt-3" role="alert">
+            Bootstrap is working if you see this green alert box!
+        </div>
+
+        {% form_theme form 'bootstrap_5_layout.html.twig' %}
+        {{ form_widget(form) }}
+        <button class="btn btn-secondary mt-4">
+            <i class="mdi mdi-content-save"></i> Ajouter un paf
+            <span id="new-sous-domaine" class="fw-bold">...</span>
+        </button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
