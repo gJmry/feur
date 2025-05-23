@@ -1,5 +1,6 @@
 <script>
     import { goto } from '$app/navigation';
+    import LampeTorche from "../components/LampeTorche.svelte";
 
     let flipped = false;
     let stage = 0;
@@ -52,7 +53,7 @@
 
 <div class="relative min-h-screen w-full background-accueil overflow-hidden">
     <div
-            class="absolute inset-0 bg-black transition-opacity duration-[1000ms]"
+            class="absolute inset-0 bg-gray-900 transition-opacity duration-[1000ms]"
             class:flicker={stage === 1}
             style="opacity: {stage === 2 ? 0 : 1}"
     ></div>
@@ -74,3 +75,5 @@
         </button>
     </div>
 </div>
+
+<LampeTorche />
