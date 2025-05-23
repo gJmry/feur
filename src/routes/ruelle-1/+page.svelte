@@ -4,6 +4,9 @@
 
     let modalOpen = false;
 
+    function carFixed(){
+        closeModal();
+    }
     function openModal() {
         modalOpen = true;
     }
@@ -32,6 +35,6 @@
     </button>
 </div>
 
-    <LampeTorche />
+<LampeTorche />
 
 
