@@ -86,10 +86,14 @@
     }
 
     .grey-div {
-        position: relative; /* Important pour le SVG */
+        position: relative;
         width: 450px;
         height: 600px;
-        background-color: grey;
+        background-image: url("EnigmeFils/boitier.png");
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        border: 2px solid black;
         border-radius: 10px;
     }
 
@@ -124,6 +128,10 @@
         height: 100%;
         pointer-events: none;
     }
+    
+    .right {
+        margin-right: 28%;
+    }   
 </style>
 
 <div class="blurred-div">
@@ -141,7 +149,7 @@
             {/each}
         </svg>
         <div class="container">
-            <div class="column">
+            <div class="column left">
                 {#each noeudsGauche as noeud}
                     <button
                         class="noeud"
@@ -151,7 +159,7 @@
                     ></button>
                 {/each}
             </div>
-            <div class="column">
+            <div class="column right">
                 {#each noeudsDroite as noeud}
                     <button
                         class="noeud"
