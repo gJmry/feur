@@ -26,21 +26,14 @@
         counts[color]++;
         if (checkSuccess()) {
             success = true;
-            setTimeout(() => {
-                dispatch("solved");
-            }, 1500);
+            setTimeout(() => dispatch("solved"), 1500);
         }
     }
 
     function checkSuccess() {
-        const expected = {
-            rouge: 0,
-            vert: 0,
-            bleu: 0
-        };
+        const expected = { rouge: 0, vert: 0, bleu: 0 };
         for (const instr of instructions) {
-            const mapped = colorMap[instr.color];
-            mapped.forEach(c => {
+            colorMap[instr.color].forEach(c => {
                 expected[c] += instr.count;
             });
         }
@@ -49,32 +42,53 @@
             expected.bleu === counts.bleu;
     }
 </script>
+<div class="w-full min-h-screen max-w-3xl mx-auto px-6 py-8 bg-gray-800 rounded-xl shadow-lg text-white flex flex-col justify-center gap-6 items-center">
+    <button
+            on:click={() => dispatch("solved")}
+            class="top-4 right-4 text-white text-2xl font-bold hover:text-red-400"
+            aria-label="Fermer"
+    >&times;</button>
+
+
+
+        <div class="flex gap-4 mb-6">
+            <div class="button rouge" on:click={() => handleClick('rouge')}>Rouge<br />{counts.rouge}</div>
+            <div class="button vert" on:click={() => handleClick('vert')}>Vert<br />{counts.vert}</div>
+            <div class="button bleu" on:click={() => handleClick('bleu')}>Bleu<br />{counts.bleu}</div>
+        </div>
+
+    <button
+            class="button validate"
+            aria-label="Valider"
+            on:click={checkSuccess()}
+            title="Valider"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+    </button>
+
+        {#if success}
+            <div class="text-green-400 font-bold text-center mt-4">🚗 La voiture démarre !</div>
+        {/if}
+</div>
 
 <style>
-    .modal {
-        background-color: #1a202c;
-        color: white;
-        border-radius: 1rem;
-        padding: 2rem;
-        max-width: 500px;
-        width: 90%;
-        box-shadow: 0 0 30px rgba(0,0,0,0.7);
-        position: relative;
-    }
-
     .button {
         width: 80px;
         height: 80px;
-        border-radius: 50%;
+        border-radius: 9999px;
         font-weight: bold;
-        color: white;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        cursor: pointer;
         user-select: none;
-        transition: transform 0.2s ease;
+        cursor: pointer;
+        transition: transform 0.2s;
+        color: white;
+        text-align: center;
+        line-height: 1.2;
     }
 
     .button:hover {
@@ -84,38 +98,4 @@
     .rouge { background: #e53e3e; }
     .vert { background: #38a169; }
     .bleu { background: #3182ce; }
-
-    .legend span {
-        padding: 0 4px;
-    }
 </style>
-
-<div class="modal">
-    <h2 class="text-2xl mb-4 text-center font-semibold">Démarrer la voiture</h2>
-    <p class="mb-4 text-sm text-center">
-        Suivez les instructions ci-dessous pour réussir à démarrer la voiture.<br />
-        Attention, les couleurs ont été mélangées... 🧠
-    </p>
-
-    <ul class="mb-6 text-sm list-disc pl-5 space-y-1">
-        {#each instructions as instr}
-            <li>{instr.action} {instr.count} fois le bouton <span class={instr.color}>{instr.color}</span></li>
-        {/each}
-    </ul>
-
-    <div class="flex justify-around mb-6">
-        <div class="button rouge" on:click={() => handleClick('rouge')}>Rouge<br />{counts.rouge}</div>
-        <div class="button vert" on:click={() => handleClick('vert')}>Vert<br />{counts.vert}</div>
-        <div class="button bleu" on:click={() => handleClick('bleu')}>Bleu<br />{counts.bleu}</div>
-    </div>
-
-    <div class="legend text-sm text-gray-300 text-center">
-        <p><span class="rouge">Rouge</span> = <span class="vert">Vert</span></p>
-        <p><span class="bleu">Bleu</span> = <span class="vert">Vert</span> + <span class="rouge">Rouge</span></p>
-        <p><span class="vert">Vert</span> = <span class="vert">Vert</span></p>
-    </div>
-
-    {#if success}
-        <div class="mt-6 text-green-400 text-center font-bold">🚗 La voiture démarre !</div>
-    {/if}
-</div>

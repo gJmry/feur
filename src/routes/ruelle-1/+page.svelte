@@ -17,6 +17,12 @@
         class="relative min-h-screen bg-cover bg-center"
         style="background-image: url('https://www.vizitoo.com/wp-content/uploads/sites/7/2020/06/fantomes-lyon.jpg');"
 >
+    {#if modalOpen}
+        <div class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center">
+            <CarMinigame  on:solved={closeModal} />
+        </div>
+    {/if}
+
     <button
             aria-label="Cliquer sur la voiture"
             on:click={openModal}
@@ -25,13 +31,7 @@
     >
     </button>
 </div>
-{#if !modalOpen}
-    <LampeTorche />
-{/if}
 
-{#if modalOpen}
-    <div class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 absolute">
-        <CarMinigame />
-    </div>
-{/if}
+    <LampeTorche />
+
 
