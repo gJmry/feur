@@ -9,7 +9,7 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.6",
     "jquery": "^3.7.1",
-    "node-sass": "^9.0.0",
+    "sass": "^1.89.0",
     "sass-loader": "^16.0.5",
     "webpack-notifier": "^1.15.0"
   },
