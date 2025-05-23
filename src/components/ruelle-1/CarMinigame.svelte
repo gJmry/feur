@@ -43,6 +43,8 @@
     }
 </script>
 <div class="w-full min-h-screen max-w-3xl mx-auto px-6 py-8 bg-gray-800 rounded-xl shadow-lg text-white flex flex-col justify-center gap-6 items-center">
+
+    <img src="ruelle-1/notice.png" alt="Notice de voiture" />
     <button
             on:click={() => dispatch("solved")}
             class="top-4 right-4 text-white text-2xl font-bold hover:text-red-400"
@@ -75,6 +77,7 @@
 
 <style>
     .button {
+        margin: 0 0.5rem;
         width: 80px;
         height: 80px;
         border-radius: 9999px;
