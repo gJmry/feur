@@ -1,14 +1,21 @@
 <script>
     import LampeTorche from "../../components/LampeTorche.svelte";
     import CarMinigame from "../../components/ruelle-1/CarMinigame.svelte";
+    import {minigameCar} from '$lib/stores.js';
+
+    $: isCarMinigameActive = $minigameCar;
 
     let modalOpen = false;
 
-    function carFixed(){
+    function carFixed() {
         closeModal();
+        minigameCar.set(true);
     }
+
     function openModal() {
-        modalOpen = true;
+        if (!isCarMinigameActive) {
+            modalOpen = true;
+        }
     }
 
     function closeModal() {
@@ -18,11 +25,13 @@
 
 <div
         class="relative min-h-screen bg-cover bg-center"
-        style="background-image: url('https://www.vizitoo.com/wp-content/uploads/sites/7/2020/06/fantomes-lyon.jpg');"
+        style="background-image: url({isCarMinigameActive
+        ? 'ruelle-1/notice.png'
+        : 'https://www.vizitoo.com/wp-content/uploads/sites/7/2020/06/fantomes-lyon.jpg'});"
 >
     {#if modalOpen}
         <div class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center">
-            <CarMinigame  on:solved={closeModal} />
+            <CarMinigame on:solved={carFixed} on:close={closeModal}/>
         </div>
     {/if}
 
@@ -35,6 +44,7 @@
     </button>
 </div>
 
-<LampeTorche />
-
+{#if !isCarMinigameActive}
+    <LampeTorche/>
+{/if}
 

@@ -1,5 +1,6 @@
 <script>
     import { createEventDispatcher } from "svelte";
+    import LampeTorche from "../LampeTorche.svelte";
     const dispatch = createEventDispatcher();
 
     const colorMap = {
@@ -31,7 +32,7 @@
         if (checkSuccess()) {
             success = true;
             errorMessage = "";
-            setTimeout(() => dispatch("solved"), 1500);
+            setTimeout(() => dispatch("solved"), 1000);
         } else {
             success = false;
             errorMessage = "La voiture n'a pas l'air de démarré...";
@@ -57,8 +58,9 @@
 </script>
 
 <div class="container">
+    <LampeTorche />
     <button
-            on:click={() => dispatch("solved")}
+            on:click={() => dispatch("close")}
             class="close-btn"
             aria-label="Fermer"
     >&times;</button>
@@ -106,6 +108,7 @@
 
 <style>
     .container {
+        z-index: 15;
         max-width: 900px;
         margin: 2rem auto;
         padding: 2rem;
@@ -114,7 +117,6 @@
         color: white;
         position: relative;
         box-shadow: 0 0 15px rgba(0,0,0,0.7);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .close-btn {
