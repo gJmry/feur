@@ -16,7 +16,14 @@
         z-index: 0;
     }
 </style>
-<LampeTorche />
 <FirefliesGroup count={30} minSize={2} maxSize={7} minSpeed={10} maxSpeed={100} />
 <div class="bg-test"></div>
-<LampPost x="120"/>
+<LampPost isOn="true"/>
+
+
+
+
+
+
+
+<LampeTorche />
