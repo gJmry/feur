@@ -1,16 +1,49 @@
-<svelte:head>
-    <link rel="preload" as="image" href="/index/k.webp">
-    <link rel="preload" as="image" href="/src/routes/ruelle/voituree-et-ruelle-light.png">
-    <link rel="preload" as="image" href="/src/routes/ruelle/voiture-et-ruelle-dark.png">
-</svelte:head>
 <script>
     import LampeTorche from "../../components/LampeTorche.svelte";
+    import CarMinigame from "../../components/ruelle/CarMinigame.svelte";
+    import {minigameCar} from '$lib/stores.js';
+
+    $: isCarMinigameActive = $minigameCar;
+
+    let modalOpen = false;
+
+    function carFixed() {
+        closeModal();
+        minigameCar.set(true);
+    }
+
+    function openModal() {
+        if (!isCarMinigameActive) {
+            modalOpen = true;
+        }
+    }
+
+    function closeModal() {
+        modalOpen = false;
+    }
 </script>
 
-<div class="relative min-h-screen bg-cover bg-center"
-     style="background-image: url('/index/k.webp')">
+<div
+        class="relative min-h-screen bg-cover bg-center"
+        style="background-image: url({isCarMinigameActive
+        ? 'ruelle/voituree-et-ruelle-light.png'
+        : 'ruelle/voiture-et-ruelle-dark.png'});"
+>
+    {#if modalOpen}
+        <div class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center">
+            <CarMinigame on:solved={carFixed} on:close={closeModal}/>
+        </div>
+    {/if}
 
-    <a href="/appartemment"
+    <button
+            aria-label="Cliquer sur la voiture"
+            on:click={openModal}
+            class="absolute cursor-pointer"
+            style="bottom: 0%; right: 30%; width: 600px; height: 300px; opacity: 0; cursor: pointer"
+    >
+    </button>
+
+    <a href="/port"
        class="absolute top-0 left-0 h-full w-[15%] bg-transparent hover:bg-white/10 transition"
        title="Aller vers la ruelle">
         <div class="absolute top-1/2 -translate-y-1/2 right-2 text-white text-[15rem]">
@@ -23,9 +56,9 @@
         </div>
     </a>
 
-    <a href="/ruelle"
+    <a href="/accueil"
        class="absolute top-0 right-0 h-full w-[15%] bg-transparent hover:bg-white/10 transition"
-       title="Aller vers la ruelle">
+       title="Aller vers l'accueil">
         <div class="absolute top-1/2 -translate-y-1/2 left-2 text-white text-[15rem]">
             <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -37,4 +70,7 @@
     </a>
 </div>
 
-<LampeTorche/>
+{#if !isCarMinigameActive}
+    <LampeTorche/>
+{/if}
+

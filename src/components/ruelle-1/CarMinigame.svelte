@@ -1,5 +1,5 @@
 <svelte:head>
-    <link rel="preload" as="image" href="/ruelle-1/notice.png">
+    <link rel="preload" as="image" href="/src/routes/ruelle/notice.png">
 </svelte:head>
 <script>
     import { createEventDispatcher } from "svelte";
@@ -70,7 +70,7 @@
 
     <div class="content">
         <div class="image-wrapper">
-            <img src="ruelle-1/notice.png" alt="Notice de voiture" />
+            <img src="ruelle/notice.png" alt="Notice de voiture" />
         </div>
 
         <div class="buttons-wrapper">

@@ -1,8 +1,3 @@
-<svelte:head>
-    <link rel="preload" as="image" href="/index/k.webp">
-    <link rel="preload" as="image" href="/src/routes/ruelle/voituree-et-ruelle-light.png">
-    <link rel="preload" as="image" href="/src/routes/ruelle/voiture-et-ruelle-dark.png">
-</svelte:head>
 <script>
     import LampeTorche from "../../components/LampeTorche.svelte";
 </script>
@@ -10,9 +5,9 @@
 <div class="relative min-h-screen bg-cover bg-center"
      style="background-image: url('/index/k.webp')">
 
-    <a href="/appartemment"
+    <a href="/toit"
        class="absolute top-0 left-0 h-full w-[15%] bg-transparent hover:bg-white/10 transition"
-       title="Aller vers la ruelle">
+       title="Aller vers le toit">
         <div class="absolute top-1/2 -translate-y-1/2 right-2 text-white text-[15rem]">
             <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -23,9 +18,9 @@
         </div>
     </a>
 
-    <a href="/ruelle"
+    <a href="/accueil"
        class="absolute top-0 right-0 h-full w-[15%] bg-transparent hover:bg-white/10 transition"
-       title="Aller vers la ruelle">
+       title="Aller vers l'accueil">
         <div class="absolute top-1/2 -translate-y-1/2 left-2 text-white text-[15rem]">
             <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
