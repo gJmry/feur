@@ -1,27 +1,37 @@
 <script>
+    import { onMount, onDestroy } from 'svelte';
+    import { createEventDispatcher } from 'svelte';
+
     export let code;
     let codeInput = ['0', '0', '0', '0'];
 
-    let win = false
-    import { createEventDispatcher } from 'svelte';
+    let win = false;
     const dispatch = createEventDispatcher();
+
+
+    function handleClose() {
+            dispatch('close');
+    }
 
     $: if (win) {
         dispatch('win');
     }
 </script>
 
-<div class="background-blur">
+<div class="background-blur flex flex-col">
+    <button on:click={handleClose} class="text-white mb-8 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+    </button>
     <div class="grey-box">
         {#each Array(4) as _, i}
             <input
-                class="code-input"
-                type="text"
-                maxlength="1"
-                pattern="[0-9]"
-                inputmode="numeric"
-                bind:value={codeInput[i]}
-                on:input={(e) => {
+                    class="code-input"
+                    type="text"
+                    maxlength="1"
+                    pattern="[0-9]"
+                    inputmode="numeric"
+                    bind:value={codeInput[i]}
+                    on:input={(e) => {
                     const val = e.target.value.replace(/[^0-9]/g, '');
                     codeInput[i] = val ? val : '0';
                     e.target.value = codeInput[i];
@@ -31,7 +41,7 @@
                 }}
             />
         {/each}
-    </div>  
+    </div>
 </div>
 
 <style>

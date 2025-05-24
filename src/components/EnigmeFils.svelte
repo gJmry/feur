@@ -1,7 +1,8 @@
 <script>
     import { onMount, createEventDispatcher } from "svelte";
+    import LampeTorche from "./LampeTorche.svelte";
 
-    const dispatch = createEventDispatcher(); // Permet d'émettre des événements
+    const dispatch = createEventDispatcher();
 
     let win = false;
 
@@ -53,7 +54,7 @@
 
             if (lignes.length === noeudsGauche.length) {
                 win = true;
-                dispatch("win"); // Émet l'événement `win`
+                dispatch("win");
             }
         }
     }
@@ -133,7 +134,7 @@
         margin-right: 28%;
     }   
 </style>
-
+<LampeTorche/>
 <div class="blurred-div">
     <div class="grey-div">
         <svg class="lines">

@@ -1,7 +1,11 @@
 <svelte:head>
-    <link rel="preload" as="image" href="/index/k.webp">
-    <link rel="preload" as="image" href="/src/routes/ruelle/voituree-et-ruelle-light.png">
-    <link rel="preload" as="image" href="/src/routes/ruelle/voiture-et-ruelle-dark.png">
+    <link rel="preload" as="image" href="index/k.webp">
+    <link rel="preload" as="image" href="ruelle/voituree-et-ruelle-light.png">
+    <link rel="preload" as="image" href="ruelle/voiture-et-ruelle-dark.png">
+    <link rel="preload" as="image" href="ruelle/voiture-et-ruelle-dark.png">
+    <link rel="preload" as="image" href="appartemment/appart-dark.webp">
+    <link rel="preload" as="image" href="appartemment/appart-light.webp">
+    <link rel="reload" as="image" href="EnigmeFils/boitier.png">
 </svelte:head>
 <script>
     import LampeTorche from "../../components/LampeTorche.svelte";
