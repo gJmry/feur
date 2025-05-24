@@ -16,6 +16,7 @@
 
     function handleRelease() {
         firefliesReleased = true;
+        minigameFirefly.set(true);
         closeModal();
     }
 

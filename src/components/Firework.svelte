@@ -1,7 +1,15 @@
 <script lang="ts">
     import { onMount, onDestroy } from "svelte";
-    import { tsParticles } from "https://cdn.jsdelivr.net/npm/@tsparticles/engine@3.1.0/+esm";
-    import { loadAll } from "https://cdn.jsdelivr.net/npm/@tsparticles/all@3.1.0/+esm";
+    import { tsParticles } from "tsparticles-engine";
+    import { loadAll } from "tsparticles-all";;
+    import {browser} from "$app/environment";
+
+    onMount(async () => {
+        if (browser) {
+            await loadAll(tsParticles);
+            await tsParticles.load({ id: containerId, options: configs });
+        }
+    });
 
     let containerId = "tsparticles";
 
@@ -60,21 +68,6 @@
                 speed: { min: 10, max: 20 },
                 outModes: { default: "destroy", top: "none" },
             },
-        },
-        sounds: {
-            enable: true,
-            events: [
-                {
-                    event: "particleRemoved",
-                    filter: (args) => args.data.particle.options.move.gravity.inverse,
-                    audio: [
-                        "https://particles.js.org/audio/explosion0.mp3",
-                        "https://particles.js.org/audio/explosion1.mp3",
-                        "https://particles.js.org/audio/explosion2.mp3",
-                    ],
-                },
-            ],
-            volume: 50,
         },
     };
 

@@ -17,6 +17,7 @@
     import {onDestroy} from "svelte";
     import {minigameRoof, minigameAppartemment, minigameCar, minigameFirefly} from '$lib/stores.js';
     import Firework from "../../components/Firework.svelte";
+    import FirefliesGroup from "../../components/FirefliesGroup.svelte";
 
     let values = {
         minigameCar: false,
@@ -55,6 +56,8 @@
 {/if}
 
 {#if allComplete}
+        <FirefliesGroup count={18} minSize={10} maxSize={18} minSpeed={60} maxSpeed={180}
+                        style="position: absolute; width: 100vw; height: 100vh;"/>
     <Firework/>
 {/if}
 
