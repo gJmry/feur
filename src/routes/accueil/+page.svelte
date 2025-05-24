@@ -6,6 +6,10 @@
     <link rel="preload" as="image" href="appartemment/appart-dark.webp">
     <link rel="preload" as="image" href="appartemment/appart-light.webp">
     <link rel="reload" as="image" href="EnigmeFils/boitier.png">
+    <link rel="reload" as="image" href="port/connaissezvousleroller.webp">
+    <link rel="reload" as="image" href="port/maisouicestclair.webp">
+    <link rel="reload" as="image" href="port/Porc.webp">
+    <link rel="reload" as="image" href="roof/background.png">
 </svelte:head>
 <script>
     import LampeTorche from "../../components/LampeTorche.svelte";
