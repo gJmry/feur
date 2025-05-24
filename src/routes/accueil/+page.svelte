@@ -48,6 +48,7 @@
         .map(([key], i) => ({id: key, style: randomPosition()}));
 
     $: allComplete = Object.values(values).every(v => v === true);
+    $: backgroundUrl = allComplete ? "/image7.png" : "/index/k.webp";
 </script>
 
 
@@ -62,7 +63,7 @@
 {/if}
 
 <div class="relative min-h-screen bg-cover bg-center flex justify-center items-center"
-     style="background-image: url('/index/k.webp')">
+     style="background-image: url({backgroundUrl})">
 
     {#each lanterns as lantern (lantern.id)}
         <Lantern style={lantern.style}/>
