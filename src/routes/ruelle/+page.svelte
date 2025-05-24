@@ -1,7 +1,7 @@
 <script>
     import LampeTorche from "../../components/LampeTorche.svelte";
-    import CarMinigame from "../../components/ruelle/CarMinigame.svelte";
     import {minigameCar} from '$lib/stores.js';
+    import CarMinigame from "../../components/ruelle/CarMinigame.svelte";
 
     $: isCarMinigameActive = $minigameCar;
 
@@ -43,7 +43,7 @@
     >
     </button>
 
-    <a href="/port"
+    <a href="/accueil"
        class="absolute top-0 left-0 h-full w-[15%] bg-transparent hover:bg-white/10 transition"
        title="Aller vers la ruelle">
         <div class="absolute top-1/2 -translate-y-1/2 right-2 text-white text-[15rem]">
@@ -56,7 +56,7 @@
         </div>
     </a>
 
-    <a href="/accueil"
+    <a href="/port"
        class="absolute top-0 right-0 h-full w-[15%] bg-transparent hover:bg-white/10 transition"
        title="Aller vers l'accueil">
         <div class="absolute top-1/2 -translate-y-1/2 left-2 text-white text-[15rem]">
