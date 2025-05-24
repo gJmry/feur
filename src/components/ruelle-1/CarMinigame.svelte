@@ -1,3 +1,6 @@
+<svelte:head>
+    <link rel="preload" as="image" href="/ruelle-1/notice.png">
+</svelte:head>
 <script>
     import { createEventDispatcher } from "svelte";
     import LampeTorche from "../LampeTorche.svelte";

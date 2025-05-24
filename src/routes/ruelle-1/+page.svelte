@@ -1,3 +1,8 @@
+<svelte:head>
+    <link rel="preload" as="image" href="/ruelle-1/voituree-et-ruelle-light.png">
+    <link rel="preload" as="image" href="/ruelle-1/voiture-et-ruelle-dark.png">
+</svelte:head>
+
 <script>
     import LampeTorche from "../../components/LampeTorche.svelte";
     import CarMinigame from "../../components/ruelle-1/CarMinigame.svelte";
@@ -26,8 +31,8 @@
 <div
         class="relative min-h-screen bg-cover bg-center"
         style="background-image: url({isCarMinigameActive
-        ? 'ruelle-1/notice.png'
-        : 'https://www.vizitoo.com/wp-content/uploads/sites/7/2020/06/fantomes-lyon.jpg'});"
+        ? 'ruelle-1/voituree-et-ruelle-light.png'
+        : 'ruelle-1/voiture-et-ruelle-dark.png'});"
 >
     {#if modalOpen}
         <div class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center">
@@ -39,7 +44,7 @@
             aria-label="Cliquer sur la voiture"
             on:click={openModal}
             class="absolute cursor-pointer"
-            style="bottom: 5%; right: 35%; width: 200px; height: 200px; opacity: 0; cursor: pointer"
+            style="bottom: 0%; right: 30%; width: 600px; height: 300px; opacity: 0; cursor: pointer"
     >
     </button>
 </div>
