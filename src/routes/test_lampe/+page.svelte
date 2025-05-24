@@ -1,6 +1,7 @@
 <script>
     import FirefliesGroup from "../../components/FirefliesGroup.svelte";
     import LampeTorche from "../../components/LampeTorche.svelte";
+    import LampPost from "../../components/LampPost.svelte";
 </script>
 
 <style>
@@ -18,3 +19,4 @@
 <LampeTorche />
 <FirefliesGroup count={30} minSize={2} maxSize={7} minSpeed={10} maxSpeed={100} />
 <div class="bg-test"></div>
+<LampPost x="120"/>
