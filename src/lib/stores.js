@@ -4,6 +4,7 @@ import { browser } from '$app/environment';
 export const minigameCar = writable(false);
 export const minigameAppartemment = writable(false);
 export const minigameRoof = writable(false);
+export const minigameFirefly = writable(false);
 
 if (browser) {
     minigameCar.subscribe(value => {
@@ -16,5 +17,9 @@ if (browser) {
 
     minigameRoof.subscribe(value => {
         localStorage.setItem('minigameRoof', value);
+    })
+
+    minigameFirefly.subscribe(value => {
+        localStorage.setItem('minigameFirefly', value);
     })
 }
