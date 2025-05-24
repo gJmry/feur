@@ -12,12 +12,62 @@
     <link rel="reload" as="image" href="roof/background.png">
 </svelte:head>
 <script>
+    import Lantern from "../../components/Lantern.svelte";
     import LampeTorche from "../../components/LampeTorche.svelte";
+    import {onDestroy} from "svelte";
+    import {minigameRoof, minigameAppartemment, minigameCar, minigameFirefly} from '$lib/stores.js';
+    import Firework from "../../components/Firework.svelte";
+
+    let values = {
+        minigameCar: false,
+        minigameAppartemment: false,
+        minigameRoof: false,
+        minigameFirefly: false,
+    };
+
+
+    const unsubCar = minigameCar.subscribe(v => values.minigameCar = v);
+    const unsubAppart = minigameAppartemment.subscribe(v => values.minigameAppartemment = v);
+    const unsubRoof = minigameRoof.subscribe(v => values.minigameRoof = v);
+    const unsubFirefly = minigameFirefly.subscribe(v => values.minigameFirefly = v);
+
+    onDestroy(() => {
+        unsubCar();
+        unsubAppart();
+        unsubRoof();
+        unsubFirefly();
+    });
+
+    function randomPosition() {
+        return `top: ${Math.random() * 85 + 5}%; left: ${Math.random() * 85 + 5}%;`;
+    }
+
+    $: lanterns = Object.entries(values)
+        .filter(([_, val]) => val === true)
+        .map(([key], i) => ({id: key, style: randomPosition()}));
+
+    $: allComplete = Object.values(values).every(v => v === true);
 </script>
 
-<div class="relative min-h-screen bg-cover bg-center"
+
+{#if !allComplete}
+    <LampeTorche/>
+{/if}
+
+{#if allComplete}
+    <Firework/>
+{/if}
+
+<div class="relative min-h-screen bg-cover bg-center flex justify-center items-center"
      style="background-image: url('/index/k.webp')">
 
+    {#each lanterns as lantern (lantern.id)}
+        <Lantern style={lantern.style}/>
+    {/each}
+
+    {#if allComplete}
+        <h1 class="text-white text-3xl"> Vous avez réussi à rallumer les lumières, bien joué !</h1>
+    {/if}
     <a href="/appartemment"
        class="absolute top-0 left-0 h-full w-[15%] bg-transparent hover:bg-white/10 transition"
        title="Aller vers la ruelle">
@@ -44,5 +94,3 @@
         </div>
     </a>
 </div>
-
-<LampeTorche/>
