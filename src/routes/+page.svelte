@@ -23,7 +23,7 @@
 
 <style>
     .background-accueil {
-        background-image: url('https://www.lyoncapitale.fr/wp-content/uploads/2018/11/Fontaine-des-Jacobins-Lyon-la-nuit-30-ans-plan-lumie%CC%80res-2018-%C2%A9-Tim-Douet_0127-770x433.jpeg');
+        background-image: url('/index/home.webp');
         background-size: cover;
         background-position: center;
     }
@@ -69,7 +69,7 @@
             <img
                     src="/index/lightswitch.png"
                     alt="Interrupteur"
-                    class="block cursor-pointer transition-transform duration-300"
+                    class="block cursor-pointer"
                     class:scale-y-[-1]={flipped}
             />
         </button>
