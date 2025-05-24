@@ -1,5 +1,6 @@
 <script>
     import { createEventDispatcher } from "svelte";
+    import FirefliesGroup from './FirefliesGroup.svelte';
     const dispatch = createEventDispatcher();
 
     let isOpen = false;
@@ -11,6 +12,7 @@
             isOpen = false;
         } else {
             isOpen = true;
+            dispatch("release"); // Ajout : signale la libération des lucioles
         }
     }
 
@@ -66,4 +68,13 @@
         role="button"
         tabindex="0"
 >
+    <FirefliesGroup
+        count={8}
+        minSize={10}
+        maxSize={16}
+        minSpeed={60}
+        maxSpeed={120}
+        released={isOpen}
+        style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:2;"
+    />
 </div>
