@@ -2,6 +2,7 @@
     import LampeTorche from "../../components/LampeTorche.svelte";
     import {minigameRoof} from '$lib/stores.js';
     import EnigmeCode from "../../components/EnigmeCode.svelte";
+    import FirefliesGroup from "../../components/FirefliesGroup.svelte";
 
     $: isMinigamentRoofActive = $minigameRoof;
 
@@ -32,9 +33,12 @@
             aria-label="Cliquer sur l'ordinateur"
             on:click={openModal}
             class="absolute cursor-pointer"
-            style="bottom: 5%; right: 5%; width: 600px; height: 300px; opacity: 0; cursor: pointer"
+            style="bottom: 5%; right: 5%; width: 600px; height: 300px; opacity: 0; cursor: pointer; z-index: 50;"
     >
     </button>
+    <div style="position: absolute; bottom: 5%; right: 5%; width: 600px; height: 300px; pointer-events: none; z-index: 100;">
+        <FirefliesGroup count={3} minSize={10} maxSize={16} minSpeed={60} maxSpeed={120} />
+    </div>
 
     {#if modalOpen}
         <div class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center">
@@ -58,3 +62,4 @@
 {#if !isMinigamentRoofActive}
     <LampeTorche/>
 {/if}
+

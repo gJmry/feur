@@ -2,9 +2,8 @@
     import LampeTorche from "../../components/LampeTorche.svelte";
     import {minigameAppartemment} from '$lib/stores.js';
     import EnigmeFils from "../../components/EnigmeFils.svelte";
-
+    import FirefliesGroup from '../../components/FirefliesGroup.svelte';
     $: isMinigamentApppartemmentActive = $minigameAppartemment;
-
     let modalOpen = false;
 
     function cableFixed() {
@@ -32,9 +31,12 @@
             aria-label="Cliquer sur l'ordinateur"
             on:click={openModal}
             class="absolute cursor-pointer"
-            style="bottom: 30%; right: 5%; width: 600px; height: 300px; opacity: 0; cursor: pointer"
+            style="bottom: 50%; right: 15%; width: 600px; height: 300px; opacity: 0; cursor: pointer; z-index: 50;"
     >
     </button>
+    <div style="position: absolute; bottom: 50%; right: 15%; width: 600px; height: 300px; pointer-events: none; z-index: 100;">
+        <FirefliesGroup count={4} minSize={10} maxSize={16} minSpeed={60} maxSpeed={120} />
+    </div>
 
     {#if modalOpen}
         <div class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center">
@@ -71,3 +73,4 @@
 {#if !isMinigamentApppartemmentActive}
     <LampeTorche/>
 {/if}
+
