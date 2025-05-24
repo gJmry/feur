@@ -25,14 +25,14 @@
 
 <div class="relative min-h-screen bg-cover bg-center"
      style="background-image: url({isMinigamentRoofActive
-        ? 'roof/roof-light.webp'
-        : 'roof/roof-light.webp'});">
+        ? 'roof/background.png'
+        : 'roof/background.png'});">
 
     <button
             aria-label="Cliquer sur l'ordinateur"
             on:click={openModal}
             class="absolute cursor-pointer"
-            style="bottom: 30%; right: 5%; width: 600px; height: 300px; opacity: 0; cursor: pointer"
+            style="bottom: 5%; right: 5%; width: 600px; height: 300px; opacity: 0; cursor: pointer"
     >
     </button>
 
