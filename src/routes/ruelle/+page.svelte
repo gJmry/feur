@@ -2,6 +2,7 @@
     import LampeTorche from "../../components/LampeTorche.svelte";
     import {minigameCar} from '$lib/stores.js';
     import CarMinigame from "../../components/ruelle/CarMinigame.svelte";
+    import FirefliesGroup from "../../components/FirefliesGroup.svelte";
 
     $: isCarMinigameActive = $minigameCar;
 
@@ -39,9 +40,12 @@
             aria-label="Cliquer sur la voiture"
             on:click={openModal}
             class="absolute cursor-pointer"
-            style="bottom: 0%; right: 30%; width: 600px; height: 300px; opacity: 0; cursor: pointer"
+            style="bottom: 0%; right: 30%; width: 600px; height: 300px; opacity: 0; cursor: pointer; z-index: 50;"
     >
     </button>
+    <div style="position: absolute; bottom: 0%; right: 30%; width: 600px; height: 300px; pointer-events: none; z-index: 100;">
+        <FirefliesGroup count={4} minSize={10} maxSize={16} minSpeed={60} maxSpeed={120} />
+    </div>
 
     <a href="/accueil"
        class="absolute top-0 left-0 h-full w-[15%] bg-transparent hover:bg-white/10 transition"
