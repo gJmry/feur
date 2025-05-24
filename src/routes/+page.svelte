@@ -59,7 +59,11 @@
     ></div>
 
     <div class="absolute inset-0 z-10 flex flex-col items-center justify-center text-white text-center space-y-8 px-4">
-        <h1 class="text-2xl font-light tracking-wider">LIGHTS EM OUT PLACEHOLDER</h1>
+        <h1 class="text-2xl font-light tracking-wider">Bienvenue sur Lights Em Up</h1>
+        <p>Pour profiter pleinement de l’expérience, nous vous recommandons de visiter ce site en plein écran (touche F11).</p>
+        <p>Dans ce jeu, votre objectif est de rallumer la lumière dans chaque salle. Pour cela, explorez attentivement chaque pièce et cliquez sur différents éléments. Certains d’entre eux pourraient déclencher des mini-jeux à résoudre !</p>
+        <p>Chaque mini-jeu réussi vous aidera à restaurer la lumière, pour illuminer toute la ville et vivre une fête des lumières inoubliable ! Bonne chance et amusez-vous bien !</p>
+
         <button
                 on:click={handleSwitchClick}
                 type="button"
